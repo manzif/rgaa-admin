@@ -48,9 +48,9 @@
       </v-app-bar>
       <NavigationDrawer />
     </nav>
-    <v-content>
+    <v-main>
       <nuxt />
-    </v-content>
+    </v-main>
     <VFooter />
   </v-app>
 </template>

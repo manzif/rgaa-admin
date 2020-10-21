@@ -195,7 +195,6 @@ export default {
       this.$refs.form.resetValidation()
     },
     createEndpoint() {
-      console.log('\n\n\n', this.body)
       // this.$store.dispatch('helper/loading')
       // this.$store.dispatch('helper/disabling')
       // try {

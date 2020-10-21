@@ -1,13 +1,17 @@
 <template>
   <v-footer :fixed="fixed" app>
-    <span class="caption">&copy; 2020 Kare</span>
+    <a href="https://rgaa.org.rw/" class="alink" target="_blank">
+      <span class="subtitle-1">&copy; 2020 RGAA</span>
+    </a>
     <v-spacer />
-    <span class="font-weight-thin caption ">V1.0</span>
+    <a href="https://www.transax.rw" class="alink" target="_blank">
+      <span class="font-weight-medium subtitle-1">Developed by Transax</span>
+    </a>
     <v-spacer />
 
-    <a href="https://www.transax.rw" class="alink">
+    <!-- <a href="https://www.transax.rw" class="alink">
       <span class="font-weight-thin caption ">Developed by Transax</span>
-    </a>
+    </a> -->
   </v-footer>
 </template>
 
