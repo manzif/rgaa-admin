@@ -3,7 +3,7 @@
     <div class="mx-12">
       <v-row align="center" justify="center">
         <v-col cols="12" md="7" sm="6">
-          <h2 class="pb-1" color="#0087ff">
+          <h2 class="pb-1" color="#38b25d">
             Add an Admin.
           </h2>
           <div class="line"></div>
@@ -13,7 +13,7 @@
             voluptatibus aut animi, quas doloribus, itaque molestiae ipsum
             officia at natus mollitia iure?
           </h4>
-          <v-btn class="" color="#0087ff" outlined to="/admin/usersview" nuxt
+          <v-btn class="" color="#38b25d" outlined to="/admin/usersview" nuxt
             ><v-icon>mdi-play</v-icon> See all available users</v-btn
           >
         </v-col>
@@ -158,7 +158,7 @@ export default {
 <style scoped>
 .line {
   width: 63px;
-  border-bottom: 5px solid #0087ff;
+  border-bottom: 5px solid #38b25d;
   position: absolute;
 }
 </style>

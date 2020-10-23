@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-md>
     <div class="mb-7 users-center">
-      <v-btn class="disable-events" text dark x-large color="#0087ff">
+      <v-btn class="disable-events" text dark x-large color="#38b25d">
         Messages Overview
         <v-icon right>fa-angle-down</v-icon></v-btn
       >
@@ -36,18 +36,7 @@
           <template v-slot:expanded-item="{ item }">
             <td :colspan="headers.length">
               <template>
-                <v-card class="mx-auto mt-5 pl-3 mb-5" max-width="344">
-                  <v-list-item three-line>
-                    <v-list-item-content>
-                      <v-list-item-title class="headline mb-1"
-                        >Message Actions</v-list-item-title
-                      >
-                      <v-list-item-subtitle
-                        >The following are actions you can perform on this
-                        message</v-list-item-subtitle
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
+                <v-card class="mx-auto mt-5 pl-3 mb-5" max-width="134">
                   <template>
                     <v-dialog v-model="dialogDelete" persistent max-width="390">
                       <template v-slot:activator="{ on }">

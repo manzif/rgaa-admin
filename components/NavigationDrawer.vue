@@ -7,7 +7,7 @@
       app
     >
       <v-list-item class="px-2">
-        <v-avatar size="65">
+        <v-avatar size="45">
           <img src="~/static/images/defaultProfile.png" alt="John" />
         </v-avatar>
 

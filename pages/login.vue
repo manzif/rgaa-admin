@@ -70,7 +70,6 @@
   </v-row>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 export default {
   layout: 'register',
   data() {
@@ -89,18 +88,20 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      isLoading: 'helper/isLoading',
-      isDisabled: 'helper/isDisabled'
-    }),
+    isLoading() {
+      return this.$store.getters['helper/isLoading']
+    },
+    isDisabled() {
+      return this.$store.getters['helper/isDisabled']
+    },
     errorMessage() {
       return this.$store.getters['users/errorMessage']
     }
   },
   methods: {
     async login() {
-      this.$store.dispatch('helper/loading')
-      this.$store.dispatch('helper/disabling')
+      this.$store.dispatch('helper/isLoading')
+      this.$store.dispatch('helper/isDisabled')
       try {
         await this.$store.dispatch('users/login', {
           email: this.email,
@@ -108,8 +109,8 @@ export default {
         })
         this.email = null
         this.password = null
-        this.$store.dispatch('helper/loading')
-        this.$store.dispatch('helper/disabling')
+        this.$store.dispatch('helper/isLoading')
+        this.$store.dispatch('helper/isDisabled')
       } catch (e) {
         // TODO: remove this log
         return e
@@ -127,7 +128,7 @@ export default {
 }
 .line {
   width: 63px;
-  border-bottom: 5px solid #78ab46;
+  border-bottom: 5px solid #38b25d;
   position: absolute;
 }
 </style>

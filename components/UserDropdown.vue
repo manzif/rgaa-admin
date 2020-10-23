@@ -35,7 +35,7 @@
             <v-list-item-title>Profile</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-btn @click="logout" class="mt-2" color="#0087ff" block text
+        <v-btn @click="logout" class="mt-2" color="#38b25d" block text
           ><v-icon>mdi-logout</v-icon>Logout</v-btn
         >
       </v-list-item-group>

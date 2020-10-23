@@ -22,7 +22,7 @@
                       <div class="subtitle-1 grey--text pb-1">FirstName</div>
                       <v-text-field
                         v-model="firstName"
-                        label="ex: Ishimwe Felix"
+                        :label="authUser.firstname"
                         required
                         dense
                         single-line
@@ -33,7 +33,7 @@
                       <div class="subtitle-1 grey--text pb-1">LastName</div>
                       <v-text-field
                         v-model="lastName"
-                        label="ex: felix@transax.rw"
+                        :label="authUser.lastname"
                         required
                         dense
                         single-line
@@ -46,12 +46,25 @@
                       </div>
                       <v-text-field
                         v-model="username"
+                        :label="authUser.username"
                         dense
                         single-line
                         outlined
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs12 md6>
+                      <div class="subtitle-1 grey--text pb-1">
+                        email
+                      </div>
+                      <v-text-field
+                        v-model="email"
+                        :label="authUser.email"
+                        dense
+                        single-line
+                        outlined
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 md12>
                       <div class="subtitle-1 grey--text pb-1">
                         Password
                       </div>
@@ -62,49 +75,11 @@
                         outlined
                       ></v-text-field>
                     </v-flex>
-                    <v-flex xs12 md6>
-                      <div class="subtitle-1 grey--text text--primary pb-1">
-                        Company Name
-                      </div>
-                      <v-text-field
-                        v-model="companyName"
-                        :counter="10"
-                        dense
-                        single-line
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12 md6>
-                      <div class="subtitle-1 grey--text pb-1">
-                        Company Registration Number
-                      </div>
-                      <v-text-field
-                        v-model="companyRegistrationNumber"
-                        dense
-                        single-line
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12 md6>
-                      <div class="subtitle-1 grey--text pb-1">
-                        CallBack Url
-                      </div>
-                      <v-text-field
-                        v-model="callback"
-                        dense
-                        single-line
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12 md6>
-                      <div class="subtitle-1 grey--text pb-1">Sector</div>
-                      <v-select :items="sectors" dense outlined></v-select>
-                    </v-flex>
                     <v-flex xs12 12>
                       <v-btn
                         :disabled="!isFormValid"
                         :loading="isLoading"
-                        @click="profileEdit"
+                        @click="editUser"
                         color="primary"
                         block
                         >Save</v-btn
@@ -128,33 +103,12 @@ export default {
     lastName: '',
     username: '',
     password: '',
-    callback: '',
-    name: '',
-    nameRules: [
-      (v) => !!v || 'Name is required',
-      (v) => (v && v.length <= 10) || 'Name must be less than 10 characters'
-    ],
     email: '',
-    companyName: '',
-    companyNameRules: [
-      (v) => !!v || 'Company name',
-      (v) => (v && v.length <= 10) || 'must be less than 10 characters'
-    ],
-    companyRegistrationNumber: '',
-    companyRegistrationNumberRules: [
-      (v) => !!v || 'Company registration number',
-      (v) => (v && v.length <= 10) || 'must be less than 10 characters'
-    ],
     emailRules: [
       (v) => !!v || 'E-mail is required',
       (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid'
     ],
     passwordRules: [(v) => !!v || 'Password is required'],
-    selectedRole: null,
-    roles: ['Superadmin', 'Manager admin', 'Manager', 'client'],
-    selectedSector: null,
-    sectors: ['E-commerce', 'Online delivery', 'Online store'],
-    checkbox: false,
     lazy: false
   }),
   computed: {
@@ -163,6 +117,9 @@ export default {
     },
     isDisabled() {
       return this.$store.getters['helper/isDisabled']
+    },
+    authUser() {
+      return this.$store.getters['users/loggedInUser']
     }
   },
   methods: {
@@ -175,19 +132,28 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation()
     },
-    async profileEdit(id) {
-      this.$store.dispatch('helper/loading')
+    async editUser(id) {
+      this.$store.dispatch('helper/isLoading')
       try {
         const userData = {
-          firstName: this.firstName,
-          lastName: this.lastName
+          email: this.email,
+          firstname: this.firstname,
+          lastname: this.lastname,
+          username: this.username,
+          password: this.password
         }
-        await this.$store.dispatch('users/profileEdit', {
-          userData
+        await this.$store.dispatch('users/editUser', {
+          userData,
+          id
         })
-        this.$store.dispatch('helper/loading')
-        this.firstName = null
-        this.lastName = null
+        this.$store.dispatch('helper/isLoading')
+        await this.$router.push('/profileview')
+        this.dialogEdit = false
+        this.email = null
+        this.firstname = null
+        this.lastname = null
+        this.username = null
+        this.password = null
       } catch (e) {
         return e
       }
@@ -203,8 +169,8 @@ export default {
   text-align: center;
 }
 .line {
-  width: 50px;
-  border-bottom: 3px solid #0087ff;
+  width: 63px;
+  border-bottom: 5px solid #38b25d;
   position: absolute;
 }
 </style>

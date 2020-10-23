@@ -32,7 +32,7 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#0087ff' },
+  loading: { color: '#38b25d' },
   /*
    ** Global CSS
    */
@@ -104,16 +104,16 @@ module.exports = {
       themes: {
         light: {
           background: colors.grey.lighten3,
-          primary: '#0087ff',
+          primary: '#38b25d',
           secondary: '#b0bec5',
-          accent: '#0087ff',
+          accent: '#38b25d',
           error: '#b71c1c'
         },
         dark: {
           background: '#012538',
-          primary: '#0087ff',
+          primary: '#38b25d',
           secondary: '#b0bec5',
-          accent: '#0087ff',
+          accent: '#38b25d',
           error: '#b71c1c'
         }
       }
