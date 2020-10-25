@@ -40,7 +40,7 @@
               </v-card>
             </v-item>
           </v-col>
-          <v-col v-if="authUser.role === 'developer'" cols="12" md="3" sm="6">
+          <v-col cols="12" md="3" sm="6">
             <v-item>
               <v-card :ripple="false" class="pa-6">
                 <v-row
@@ -48,7 +48,7 @@
                   justify="center"
                   class="ma-2 primary--text font-weight-black"
                 >
-                  <v-icon color="primary" large>mdi-application</v-icon>
+                  <v-icon color="primary" large>fa-user-plus</v-icon>
                 </v-row>
                 <v-row
                   align="center"
@@ -59,7 +59,7 @@
                 </v-row>
 
                 <v-card-text class="text-center">
-                  Use this action to create a member
+                  click here to create a member
                 </v-card-text>
                 <v-card-actions class="white justify-center">
                   <v-btn

@@ -36,7 +36,7 @@
           <template v-slot:expanded-item="{ item }">
             <td :colspan="headers.length">
               <template>
-                <v-card class="mx-auto mt-5 pl-3 mb-5" max-width="134">
+                <v-card class="mx-auto mt-5 pl-3 mb-5" max-width="134" flat>
                   <template>
                     <v-dialog v-model="dialogDelete" persistent max-width="390">
                       <template v-slot:activator="{ on }">

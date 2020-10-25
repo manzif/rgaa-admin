@@ -55,7 +55,7 @@
                 <v-btn
                   @click="login"
                   :loading="isLoading"
-                  :disabled="!isFormValid"
+                  :disabled="isDisabled"
                   large
                   block
                   color="primary mb-1"
@@ -100,17 +100,17 @@ export default {
   },
   methods: {
     async login() {
-      this.$store.dispatch('helper/isLoading')
-      this.$store.dispatch('helper/isDisabled')
+      this.$store.dispatch('helper/loading')
+      this.$store.dispatch('helper/disabling')
       try {
         await this.$store.dispatch('users/login', {
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('helper/loading')
+        this.$store.dispatch('helper/disabling')
         this.email = null
         this.password = null
-        this.$store.dispatch('helper/isLoading')
-        this.$store.dispatch('helper/isDisabled')
       } catch (e) {
         // TODO: remove this log
         return e

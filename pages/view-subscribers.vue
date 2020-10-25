@@ -38,18 +38,7 @@
           <template v-slot:expanded-item="{ item }">
             <td :colspan="headers.length">
               <template>
-                <v-card class="mx-auto mt-5 pl-3 mb-5" max-width="344">
-                  <v-list-item three-line>
-                    <v-list-item-content>
-                      <v-list-item-title class="headline mb-1"
-                        >Message Actions</v-list-item-title
-                      >
-                      <v-list-item-subtitle
-                        >The following are actions you can perform on this
-                        message</v-list-item-subtitle
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
+                <v-card class="mx-auto mt-5 pl-3 mb-5" max-width="140" flat>
                   <template>
                     <v-dialog v-model="dialogDelete" persistent max-width="390">
                       <template v-slot:activator="{ on }">

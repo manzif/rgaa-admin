@@ -61,6 +61,7 @@ export const actions = {
         await this.dispatch('users/fetchUsers')
         await this.dispatch('app/fetchApps')
         await this.dispatch('endpoint/fetchEndpoints')
+        await this.dispatch('endpoint/fetchSubscribers')
       }
     } catch (error) {
       if (error.response) {
